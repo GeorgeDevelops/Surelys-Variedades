@@ -1,0 +1,371 @@
+
+
+
+
+
+
+@media (max-width: 1840px) {
+    .nav-item { font-size: 16px; }
+}
+
+@media (max-width: 1750px) {
+    #cards-banner { 
+        display: grid;
+        grid-template-columns: auto auto auto auto; }
+
+    .cards-banner { 
+        display: grid;
+        grid-template-columns: auto auto auto auto; }
+
+    #section-holder section { grid-template-columns: auto auto auto auto;}
+}
+
+
+@media (max-width: 1770px) {
+    .navbar-nav { display: block; position: absolute; top: 80%; left: 0%; z-index: 100; background-color: #BF5F9A; border-radius: 10px;}
+    .nav-item { display: block;}
+}
+
+@media (max-width: 1470px) {
+    #cards-banner { 
+        display: grid;
+        grid-template-columns: auto auto auto; }
+
+    .cards-banner { 
+        display: grid;
+        grid-template-columns: auto auto auto; }        
+
+    #section-holder section { grid-template-columns: auto auto auto;}
+
+    #ordersHolder {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    #fileLabel {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1400px) {
+    #ordersHolder ul li {
+        flex-direction: column;
+    }
+
+    #ordersHolder ul li .info {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 1340px){
+    #bannerCart {
+        gap: 10px;
+    }
+
+    #fa-trash-alt {
+        left: 150px;
+    }
+} 
+
+@media (max-width: 1190px) {
+    #cards-banner { 
+        display: grid;
+        grid-template-columns: auto auto; }
+
+    .cards-banner { 
+        display: grid;
+        grid-template-columns: auto auto; }
+
+    #section-holder section { grid-template-columns: auto auto;}
+
+    #profile { width: 60%;}
+    
+    #profile p { font-size: 20px;}
+
+    #productDetailContainer { flex-direction: column;  padding: 10px;}
+
+    #productDetailContainer .imgContainer { width: 100%;}
+
+    #productDetailContainer .productInfo { width: 100%;}
+
+    #fa-trash-alt { left: 0px; top: 0px;}
+
+    #bannerCart .btns {
+        gap: 1px;
+    }
+
+    #cartPageContainer {
+        display: block;
+        width: 100%;
+    }
+
+    #cartOrder {
+        display: block;
+        width: 100%;
+        margin-bottom: 100px;
+        padding-bottom: 50px;
+    }
+
+    #fileLabel {
+        font-size: 18px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 1050px){
+    #publishHolder h2 {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 990px) {
+    #ordersHolder ul li .info {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 910px) {
+    #section-holder {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    #sidebar {
+        display: flex;
+        margin: 0px auto;
+    }
+
+    #section-holder section {
+        margin: 0px auto;
+    }
+
+    #productDetailContainer { padding: 5px;}
+
+    #publishHolder {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 830px) {
+    #fileLabel {
+        font-size: 50px;
+        line-height: 150px;
+    }
+}
+
+@media (max-width: 800px) {
+    #row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 780px){
+    #form-container {
+    width: 50%;
+}
+}
+
+@media (max-width: 770px){
+    #publishHolder h2 {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 650px) {
+    #shop-title {
+        margin: 0px;
+        margin-left: 20px;
+        width: 60%;
+        font-size: 25px;
+    }
+
+    #profile {
+        width: 80%;
+    }
+
+    #productDetailContainer .imgContainer { height: 500px;}
+
+    #confirmation {
+        margin-bottom: 200px;
+    }
+
+    #form-container {
+        width: 75%;
+    }
+}
+
+@media (max-width: 570px) {
+    #form-container {
+        width: 80%;
+    }
+    #card {
+        width: 200px;
+        height: 300px;
+        padding: 3px;
+    }
+
+    #cards-banner {
+        column-gap: 8px;
+        row-gap: 8px;
+    }
+
+    .cards-banner {
+        column-gap: 3px;
+        row-gap: 3px;
+    }
+
+    #section-holder section {
+        column-gap: 5px;
+        row-gap: 5px;
+    }
+
+    #row {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-around;
+    }
+
+    #profile {
+        width: 95%;
+    }
+
+    #profile p { font-size: 18px;}
+
+    #productDetailContainer .imgContainer { height: 450px;}
+
+    #cartPageContainer { padding: 5px;}
+
+    #ordersHolder {
+        margin: 10px;
+        padding: 5px;
+    }
+
+    #ordersHolder ul li {
+        padding: 20px 10px;
+    }
+
+    #ordersHolder h2 {
+        font-size: 30px;
+    }
+
+    #sort {
+        font-size: 30px;
+    }
+
+    #publishHolder {
+        width: 95%;
+    }
+}
+
+@media (max-width: 425px) {
+    #form-container {
+        width: 99%;
+    }
+    #card {
+        width: 195px;
+        height: 275px;
+    }
+}
+
+@media (max-width: 415px) {
+    #card {
+        width: 190px;
+        height: 270px;
+    }
+}
+
+@media (max-width: 450px) {
+    #card {
+        padding: 0.5px;
+        
+    }
+    .img-container { 
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    #card {
+        padding: 0px;
+        margin-bottom: 15px;
+        width: 188px;
+        height: 240px;
+    }
+    .img-container { 
+        overflow: hidden;
+        height: 150px;
+    }
+
+    #card .size { display: none;}
+    #card .title { font-size: 18px;}
+    #card .price { font-size: 18px;}
+
+    #sidebar {
+        padding: 0px;
+        margin: 5px;
+    }
+
+    #cards-banner {
+       grid-template-columns: auto auto;
+       gap: 4px;
+       padding: 20px 2px 20px 2px;
+    }
+
+    .cards-banner {
+       grid-template-columns: auto;
+    }
+
+    #productDetailContainer .imgContainer { height: 400px;}
+
+    #confirmation {
+        margin-bottom: 300px;
+    }
+
+    #sidebar {
+        width: 90%;
+        margin: 0px auto;
+    }
+
+    #sidebar div {
+        width: 100%;
+    }
+
+    #category {
+        width: 90%;
+        margin: 0px auto;
+        text-align: center;
+        justify-content: center;
+    }
+
+    #sidebar div span {
+        text-align: center;
+    }
+}
+
+@media (max-width: 390px) {
+    #section-holder section { grid-template-columns: auto auto;}
+
+    #card {
+        width: 180px;
+        height: 230px;
+    }
+
+    #productDetailContainer .imgContainer { height: 350px;}
+
+    #confirmation {
+        margin-bottom: 350px;
+    }
+
+    #ordersHolder ul {
+        height: 800px;
+    }
+}
+
+@media (max-width: 380px){
+    #card {
+        width: 175px;
+        height: 220px;
+    }
+}

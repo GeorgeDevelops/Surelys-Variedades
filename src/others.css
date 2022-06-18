@@ -1,0 +1,575 @@
+
+#feed-banner {
+    display: block;
+    width: 100%;
+    padding: 100px;
+    text-align: center;
+    color: #eff3f3;
+    font-size: 15px;
+    font-family: 'Sansita Swashed',cursive;
+    margin-top: 30px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 1px #333;
+    background: rgb(34,11,78);
+    background: radial-gradient(circle, rgba(34,11,78,1) 62%, rgba(61,23,130,1) 100%, rgba(130,19,42,1) 100%);
+}
+
+#cartPageContainer {
+    display: inline-block;
+    width: 49%;
+    height: 500px;
+    padding: 50px 50px 50px 50px;
+    border-right: 1px solid #ccc;
+    margin-top: 30px;
+}
+
+#cartScroll {
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #BF5F9A;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+#cartPageContainer .carrito {
+    display: inline-block;
+    margin: 0px 20px 30px 20px;
+    padding-right: 30px;
+    font-size: 40px;
+    font-family: 'Sansita Swashed', cursive;
+    border-bottom: 2px solid #BF5F9A;
+}
+
+#bannerCart {
+    display: grid;
+    width: 90%;
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
+    gap: 50px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 1px 1px 4px #333;
+    margin-left: 30px;
+    margin-bottom: 8px;
+}
+
+#bannerCart .productName {
+    font-size: 20px;
+    font-family: cursive;
+    font-weight: bolder;
+}
+
+#bannerCart .btns {
+    display: flex;
+    width: 100%;
+    gap: 15px;
+}
+
+#bannerCart .btns .btn {
+    box-shadow: 1px 1px 4px #333;
+    margin-left: 20px;
+    font-family: cursive;
+}
+
+#productDetailTitle {
+    display: inline-block;
+    padding: 10px 60px 10px 0px;
+    margin: 20px 0px 30px 50px;
+    font-family: 'Sansita Swashed', cursive;
+    font-weight: bolder;
+    border-bottom: 2px solid #BF5F9A;
+}
+
+.sizeItem {
+    display: inline-block;
+    margin-right: 0px;
+    background-color: #ccc;
+    padding: 8px 10px;
+    border-radius: 1px;
+    border: 1px solid #ccc;
+}
+
+.sizeItem input {
+    display: none;
+}
+
+.btn-gray, .btn-blue, .bg-purple {
+    display: inline-block;
+    padding: 10px;
+    margin: 2px;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: 'Sansita Swashed', cursive;
+    cursor: pointer;
+    border-style: none;
+}
+
+.btn-blue { background-color: #BF5F9A;
+    border-radius: 0px 5px 5px 0px;
+    color: #fff;
+}
+.btn-gray { background-color: #BF5F9A;
+    border-radius: 5px 0px 0px 5px;
+    color: #fff;
+}
+.bg-purple { background-color: #AF7AC5; 
+    color: #fff;
+}
+
+#cartOrder {
+    width: 50%;
+    height: 500px;
+    float: right;
+    margin-top: 30px;
+    padding: 50px;
+}
+
+#cartOrder .moreInfo {
+    display: inline-block;
+    margin: 0px 20px 30px 20px;
+    padding: 0px 30px 10px 0px;
+    font-size: 40px;
+    font-family: 'Sansita Swashed', cursive;
+    border-bottom: 2px solid #BF5F9A;
+}
+
+.clientInfo {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 8px;
+    border-style: none;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    outline: none;
+    margin-left: 10px;
+}
+
+.productInfo {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 8px;
+    border-style: none;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    outline: none;
+    margin-left: 10px;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+.labelStyle {
+    font-size: 20px;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+#sendOrder {
+    display: block;
+    padding: 10px 50px;
+    border-radius: 8px;
+    border-style: none;
+    margin: 30px auto;
+    font-size: 20px;
+    font-family: 'Sansita Swashed', cursive;
+    box-shadow: 1px 1px 5px;
+}
+
+#sendOrder:active {
+    box-shadow: 1px 1px 1px;
+};
+
+#cartOrder .moreInfo div {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+}
+
+#terms {
+    display: block;
+    margin-top: 60px;
+}
+
+#myfile {
+    display: none;
+}
+
+#fileLabel {
+    display: inline-block;
+    height: 250px;
+    background-color: rgb(248, 248, 248);
+    text-align: center;
+    line-height: 240px;
+    font-size: 35px;
+    color: #ccc;
+    border-radius: 8px;
+    margin: 30px 30px 30px 50px;
+    box-shadow: 1px 1px 1px #ccc;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+#newProductForm {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+#publishHolder {
+    display: grid;
+    width: 50%;
+    padding: 30px;
+}
+
+#publishHolder h2 {
+    display: inline-block;
+    font-family: 'Sansita Swashed', cursive;
+    font-size: 45px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #BF5F9A;
+    margin: 20px auto;
+}
+
+#publishHolder button {
+    display: block;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Sansita Swashed', cursive;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    border-style: none;
+    background-color: #BF5F9A;
+    color: #fff;
+}
+
+#ordersHolder {
+    display: block;
+    width: 95%;
+    margin: 0px auto;
+    padding: 50px 50px 0px 50px;
+}
+
+#ordersHolder h2  {
+    display: inline-block;
+    font-family: 'Sansita Swashed', cursive;
+    font-size: 45px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #BF5F9A;
+    margin: 0px auto;
+}
+
+#ordersHolder ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 10px 0px 30px;
+    margin-top: 30px;
+    overflow-y: scroll;
+    height: 500px;
+}
+
+#ordersHolder ul li {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 20px 50px 20px 50px;
+    justify-content: space-between;
+    box-shadow: 1px 1px 5px;
+}
+
+#ordersHolder ul li div {
+    display: flex;
+    gap: 20px;
+}
+
+#ordersHolder ul li .info {
+    gap: 80px;
+}
+
+#ordersHolder ul li div button {
+    border-style: none;
+    border-radius: 10px;
+    padding: 0px 25px;
+    font-family: 'Sansita Swashed', cursive;
+    box-shadow: 1px 1px 3px #333;
+    color: #fff;
+}
+
+#ordersHolder ul li div button:active {
+    box-shadow: 1px 1px 0px #333;
+}
+
+#ordersHolder ul li div .red { background-color:  #E74C3C;}
+#ordersHolder ul li div .blue { background-color:  #3498DB;}
+#ordersHolder ul li div .green { background-color:  #28B463;}
+
+#ordersHolder ul li div p {
+    font-size: 20px;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+#ordersHolder ul li div .status {
+    text-align: center;
+}
+
+#ordersHolder ul li div .status span { color: #3498DB; }
+
+#confirmation {
+    display: block;
+    text-align: center;
+    padding: 50px;
+    height: 600px;
+    width: 100%;
+    padding-top: 250px;
+    font-weight: bolder;
+}
+
+#confirmation div .confirmed {
+    font-size: 50px;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+#confirmation div .thanks {
+    font-size: 25px;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+#confirmation div button {
+    border-style: none;
+    border-radius: 8px;
+    font-family: 'Sansita Swashed', cursive;
+    padding: 8px 20px;
+    background-color: #BF5F9A;
+    color: #fff;
+    box-shadow: 1px 1px 0px #333;
+}
+
+#confirmation div button:active {
+    background-color: #b6488b;
+}
+
+#profile {
+    display: flex;
+    width: 40%;
+    height: fit-content;
+    padding: 50px 50px 20px 50px;
+    margin: 0px auto;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    background-color: #ccc;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px;
+    margin-top: 50px;
+}
+
+#profile h2 {
+    display: inline-block;
+    font-family: 'Sansita Swashed', cursive;
+    font-size: 45px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #BF5F9A;
+    margin: 0px auto;
+}
+
+#profile p {
+    font-size: 25px;
+    font-family: 'Sansita Swashed', cursive;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+#profile p span {
+    color: #3498DB;
+    text-shadow: 1px 1px 1px #333;
+    letter-spacing: 1px;
+}
+
+#profile button {
+    border-style: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-family: 'Sansita Swashed', cursive;
+    color: #fff;
+}
+
+#profile .blue {
+    background-color: #3498DB;
+    box-shadow: 1px 1px 2px #333;
+}
+
+#profile .red {
+    background-color: #E74C3C;
+    box-shadow: 1px 1px 2px #333;
+}
+
+#profile .black {
+    background-color: #333;
+    box-shadow: 1px 1px 2px #333;
+}
+
+#profile .green {
+    background-color: #28B463;
+    box-shadow: 1px 1px 2px #333;
+}
+
+#profile .yellow {
+    background-color: #F1C40F;
+    box-shadow: 1px 1px 2px #333;
+    color: #333;
+}
+
+#profile .red:active, #profile .black:active,
+#profile .green:active, #profile .yellow:active {
+    box-shadow: 1px 1px 0px #333;
+}
+
+#profile .red:hover, #profile .black:hover,
+#profile .green:hover, #profile .yellow:hover, #profile .blue:hover {
+    opacity: 0.8;
+}
+
+.error {
+    display: none;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #b02819;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.noFound {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Sansita Swashed', cursive;
+    color: #ccc;
+}
+
+#sort {
+    border-style: none;
+    font-size: 40px;
+    outline: none;
+}
+
+#sort option {
+    font-size: 30px;
+    padding: 5px;
+}
+
+#fa-trash-alt {
+    display: flex;
+    font-size: 35px;
+    color: #b02819;
+    position: relative;
+    left: 250px;
+    top: 10px;
+}
+
+#menu {
+    display: block;
+    font-size: 35px;
+    margin: 10px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    color: #ccc;
+    z-index: 99 !important;
+}
+
+#searchPreview {
+    display: flex;
+    width: 250px;
+    flex-direction: column;
+    position: absolute;
+    padding: 10px;
+    gap: 5px;
+    background-color: #b6488b;
+    right: 7.5%;
+    top: 78%;
+    border-radius: 6px;
+}
+
+#searchPreview li {
+    padding: 5px;
+    margin: 3px;
+    background-color: #AF7AC5;
+    border-radius: 5px;
+    padding-left: 10px;
+    color: #fff;
+    font-family: 'Sansita Swashed', cursive;
+    list-style: none;
+    cursor: pointer;
+}
+
+.sliderContainer {
+    margin: 0px auto;
+    margin-top: 20px;
+    position: relative;
+}
+
+#slider {
+    display: block;
+    margin: 0px auto;
+    transition: all 300ms ease-in-out;
+    background-position: -250px 150px;
+}
+
+.arrow {
+    position: absolute;
+    font-size: 50px;
+    color: #333;
+    cursor: pointer;
+}
+
+.left {
+    bottom: 40%;
+}
+
+.right {
+    bottom: 40%;
+}
+
+#bulletsContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 8px;
+    position: absolute;
+    bottom: 30px;
+}
+
+.dot {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    background-color: #000;
+    border: 3px solid #000;
+}
+
+.active {
+    background-color: transparent !important;
+}
+
