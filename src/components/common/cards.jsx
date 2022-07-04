@@ -27,9 +27,9 @@ async function getProducts(){
     filterSectionMatch(data, section);
 }
 
-function getImage(image){
-    let { url } = JSON.parse(image);
-    return url;
+function getImage(img){
+    let { image } = JSON.parse(img);
+    return image;
 }
 
 useEffect(()=>{

@@ -9,6 +9,7 @@ const OrderItem = (props) => {
     const [user, setUser] = useState(null);
     const [admin, setAdmin] = useState(null);
     const [owner, setOwner] = useState(null);
+    const [phone, setPhone] = useState(null);
 
     function style(status){
         if (status === "Pendiente") return "#8E44AD";
@@ -92,10 +93,17 @@ const OrderItem = (props) => {
         return setOwner(user); 
     }
 
+    async function getPhone(){
+        const { data } = await getCurrentUser(name);
+        let phone = data.phone;
+        return setPhone(phone); 
+    }
+
     useEffect(() => {
         if (user){
           getAdmin();
-          getOwner()
+          getOwner();
+          getPhone();
         } else {
           return null;
         }
@@ -113,6 +121,7 @@ const OrderItem = (props) => {
                 <li style={{opacity: status === "Cancelado" ? 0.5 : 1}}>
                    <div className='info'>
                    { admin && <p>Cliente ID: <br/>{ owner }</p> }
+                   <p>Telefono: <br/>{ phone }</p>
                    <p>Pedido ID: <br/>{ id }</p>
                    <p>Fecha: <br/>{ date }</p>
                    <p className='status'>estado de la orden: <br/><span style={{color: style(status)}}>{ status }</span></p>

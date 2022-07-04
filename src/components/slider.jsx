@@ -2,20 +2,13 @@ import React, {useEffect, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Slider = (props) => {
-   const {slideWidth, slideHeight, images,
+   const {slideWidth, slideHeight,
     autoPlay, horizontal, vertical,
     showBullets, bulletsColor, bulletsBorderColor, topRelative,
-    leftRelative, objectFit } = props;
+    leftRelative, images } = props;
 
-   const [size, setSize] = useState(window.innerWidth);
-   const [width, setWidth] = useState(window.innerWidth);
    const [currentIndex, setCurrentIndex] = useState(0);
-
-
-   function handleResize(){
-      setSize(window.innerWidth);
-      setWidth(size - 200);
-    }
+   const [imgs, setImgs] = useState([]);
   
     function nextArrow() {
       if (images.length === currentIndex + 1) {
@@ -35,34 +28,40 @@ const Slider = (props) => {
 
     function slideSlider(time){
       setInterval(()=>{
-        console.log("autoplay")
         nextArrow();
       }, time);
     }
 
-    function setBulletPositon(index){
+    function setBulletPosition(index){
       setCurrentIndex(index)
     }
 
-    const deviceWidth = window.innerWidth;
-
-    useEffect(()=>{
-      window.addEventListener('resize', handleResize);
-    }, [deviceWidth]);
-
     autoPlay && slideSlider(autoPlay);
+
+    useEffect(() => {
+      let urlArray = [];
+      if (images){
+        images.forEach(obj => {
+          let url = obj.image;
+          urlArray.push(url);
+        });
+
+        setImgs(urlArray);
+      }
+      
+    }, [images])
 
     return ( 
         <React.Fragment>
           <div className="sliderContainer" style={{ width: slideWidth, height: slideHeight, top: topRelative,
           left: leftRelative  }}>
             <img 
-            src={images[currentIndex || 0].url}
-            alt=""
+            src={ imgs[currentIndex || 0] }
+            alt="Image not available"
             id='slider'
-            width={slideWidth} 
+            width={slideWidth}
             height={slideHeight}
-            style={{ objectFit: objectFit, display: 'flex'}}
+            style={{ display: 'flex'}}
              />
              <FontAwesomeIcon onClick={ prevArrow } style={{ left: horizontal, top: vertical }} className='arrow left' icon="fa-solid fa-chevron-left" />
              <FontAwesomeIcon onClick={ nextArrow } style={{ right: horizontal, top: vertical }} className='arrow right' icon="fa-solid fa-chevron-right" />
@@ -70,10 +69,10 @@ const Slider = (props) => {
               {
                 showBullets && <div id='bulletsContainer'>
                 {
-                  Array.from({ length: images.length }).map((item, index) => <div 
+                  Array.from({ length: null }).map((item, index) => <div 
                   key={index} 
                   className={currentIndex === index ? "dot active" : "dot"}
-                  onClick={ () => setBulletPositon(index) }
+                  onClick={ () => setBulletPosition(index) }
                   style={{backgroundColor: bulletsColor, borderColor: bulletsBorderColor}}></div> )
                 }
               </div>

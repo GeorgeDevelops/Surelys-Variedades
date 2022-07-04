@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import { jwtDecoded } from '../services/jwtDecode';
 import httpService from '../services/httpService';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Profile = (props) => {
     const [user, setUser] = useState('');
@@ -36,21 +36,20 @@ const Profile = (props) => {
        }
     },[]);
 
-
     return ( <React.Fragment>
         <div id='profile'>
             <h2 className='profile'>Perfil</h2>
 
-            <p>Nombre: <span>{ user.username }</span></p>
-            <p>Correo: <span>{ user.email }</span></p>
-            <p>Telefono: <span>{ user.phone }</span></p>
+            <p>Nombre  <FontAwesomeIcon icon="fa-solid fa-user" /> <span><br /></span> <span className='profile-info'>{ user.username }</span></p>
+            <p>Correo  <FontAwesomeIcon icon="fa-solid fa-envelope" /> <span><br /></span> <span className='profile-info'>{ user.email }</span></p>
+            <p>Telefono  <FontAwesomeIcon icon="fa-solid fa-phone" /> <span><br /></span> <span className='profile-info'>{ user.phone }</span></p>
 
             {
-                user.isAdmin && <button className="green" onClick={()=> navigate('/new/product')}>Nuevo producto</button>
+                user.isAdmin && <button className="green" onClick={() => navigate('/new/product')}>Nuevo producto</button>
             }
 
             {
-                user.isAdmin && <button className="blue" onClick={()=> toast.info("Esta seccion no esta disponible.")}>Cambiar foto de portada</button>
+                user.isAdmin && <button className="blue" onClick={() => navigate('/portal')}>Cambiar foto de portada</button>
             }
             <button className="yellow" onClick={()=> navigate('/orders')}>Pedidos</button>
             <button className="red" onClick={ deleteAccount }>Eliminar cuenta</button>

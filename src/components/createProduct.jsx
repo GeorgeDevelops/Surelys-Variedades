@@ -57,7 +57,7 @@ const CreateProduct = () => {
             const imageRef = ref(storage, `images/${input.files[i].name + v4()}`);
             uploadBytes(imageRef, input.files[i]).then(async (snapshot)=>{ 
                const url = await getDownloadURL(snapshot.ref);
-               urls.push(JSON.stringify({url: url}));
+               urls.push(JSON.stringify({image: url}));
                setData({...data, images: urls});
             });
         }

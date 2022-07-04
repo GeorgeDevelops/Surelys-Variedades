@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import NavBar from './components/navbar';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faShoppingCart, faUpload, faUser, faSignOutAlt, faTrashAlt, faBars,
-faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+faChevronLeft, faChevronRight, faTrashCan, faAt, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
@@ -25,7 +25,7 @@ import Profile from './components/profile';
 import Footer from './components/footer';
 import Portal from './components/portal';
 
-library.add( faShoppingCart, faUpload, faUser, faSignOutAlt, faTrashAlt, faBars, faChevronLeft, faChevronRight );
+library.add( faAt, faPhone, faEnvelope, faTrashCan, faShoppingCart, faUpload, faUser, faSignOutAlt, faTrashAlt, faBars, faChevronLeft, faChevronRight );
 
 function App() {
   const [user, setUser] = useState(null);

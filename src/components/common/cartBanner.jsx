@@ -21,9 +21,9 @@ const Banner = (props) => {
         <div id='bannerCart'>
             <p className='productName'>{ name }</p>
             <div className='btns'>
-                <span id={productId._id} onClick={handleDelete} className='btn btn-danger'>X</span>
-                <span className='badge bg-warning m-1 p-2'>{ size <= 650 && `${amount}` }{ size > 650 && `Cantidad: ${ amount }` }</span>
-                <span className='badge bg-success m-1'> { size <= 650 && `RD$ ${price}` }{ size > 650 && `Precio: RD$ ${ price }` }</span>
+                <span id={productId._id} onClick={handleDelete} className='btn btn-danger'>Quitar</span>
+                <span className='badge bg-info'>{ `# ${ amount }` }</span>
+                <span className='badge bg-success'> { `RD$ ${ price }` }</span>
             </div>
         </div>
     </React.Fragment> );

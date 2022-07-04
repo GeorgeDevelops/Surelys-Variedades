@@ -171,6 +171,9 @@
     #publishHolder h2 {
         font-size: 25px;
     }
+    #slider {
+        object-fit: cover;
+    }
 }
 
 @media (max-width: 650px) {
@@ -193,6 +196,30 @@
 
     #form-container {
         width: 75%;
+    }
+
+    #portalContainer p span {
+        font-size: 20px;
+    }
+
+    #fileInput label {
+        font-size: 15px;
+    }
+
+    #photosViewer li {
+        height: 325px;
+    }
+}
+
+@media (max-width: 600px) {
+    #bannerCart .btns .badge, #bannerCart .btns .btn {
+        font-size: 9px;
+        line-height: 35px;
+    }
+
+    #bannerCart .productName {
+        font-size: 13px;
+        line-height: 33px;
     }
 }
 
@@ -256,6 +283,18 @@
 
     #publishHolder {
         width: 95%;
+    }
+
+    #photosViewer li {
+        height : 225px;
+    }
+
+    #fileInput label { 
+        font-size: 10px;
+    }
+
+    #portalContainer p span { 
+        font-size: 13px;
     }
 }
 

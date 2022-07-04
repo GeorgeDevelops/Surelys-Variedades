@@ -64,7 +64,7 @@ const [size, setSize] = useState('');
                 </a>
               </li>
               <li className="nav-item mb-2">
-                <a target="_blank" rel="noreferrer" href="https://l.instagram.com/?u=https%3A%2F%2Fwa.link%2F8j1d4t&e=ATMeo1Q0cFF7EupbF5dHYNiIwGxeXJqXrB-EAyF8XD5ziS6alxTFGCieZBwyWe7XiOVvuaCYl_AEGh5qSbGtUA&s=1" className="nav-link p-0 text-muted">
+                <a target="_blank" rel="noreferrer" href="https://api.whatsapp.com/send?phone=18093320017&text=Saludos%2C%20gracias%20por%20comunicarse%20con%20surelys%20variedades%2C%20como%20podemos%20ayudarle%3F%20" className="nav-link p-0 text-muted">
                   WhatsApp
                 </a>
               </li>
