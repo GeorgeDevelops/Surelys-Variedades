@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
+import { cartContext } from '../../context/AppContext';
 
 const Banner = (props) => {
-    const { name, price, amount,  handleDelete, productId } = props;
+    //Context
+    const cart = useContext(cartContext)
+    
+    const { name, price, amount, productId } = props;
     const [size, setSize] = useState(window.innerWidth);
-
-
 
     function handleResize (){
         setSize(window.innerWidth);
@@ -21,7 +23,7 @@ const Banner = (props) => {
         <div id='bannerCart'>
             <p className='productName'>{ name }</p>
             <div className='btns'>
-                <span id={productId._id} onClick={handleDelete} className='btn btn-danger'>Quitar</span>
+                <span id={productId._id} onClick={ cart.remove } className='btn btn-danger'>Quitar</span>
                 <span className='badge bg-info'>{ `# ${ amount }` }</span>
                 <span className='badge bg-success'> { `RD$ ${ price }` }</span>
             </div>

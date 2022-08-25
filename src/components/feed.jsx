@@ -2,6 +2,8 @@ import React, { useEffect, useState} from "react";
 import Slider from './slider';
 import Card from "./common/cards";
 import sliderService from '../services/sliderService';
+import CommunicationBanner from "./communicationBanner";
+import Carousel from "./carousel";
 
 const Feed = (props) => {
   const [images, setImages] = useState();
@@ -18,16 +20,18 @@ const Feed = (props) => {
   return (
     <React.Fragment>
         <Slider 
-         slideWidth={'95%'}
-         slideHeight={700}
+         slideWidth={'65%'}
          images={ images }
          autoPlay={null}
-         horizontal={85}
-         vertical={310}
          showBullets={true}
          bulletsColor={"#b6488b"}
-         objectFit={'cover'}
          />
+
+      <CommunicationBanner />
+
+      <Carousel />
+
+
       <div id="feed-banner">
         <p>
           El estilo es una expresión profundamente personal de quién eres, y
@@ -35,6 +39,8 @@ const Feed = (props) => {
         </p>
         <p>- Nina Garcia -</p>
       </div>
+
+
       <div id="cards-banner">
         <Card />
       </div>

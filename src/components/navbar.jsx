@@ -9,7 +9,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { jwtDecoded } from '../services/jwtDecode';
 
 const NavBar = (props) => {
-  const { count, setCount } = props;
   const toastId = React.useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -81,14 +80,12 @@ const NavBar = (props) => {
 
     return ( 
         <React.Fragment>
-            <div>
+            <div id='navbar' >
                 <p id="shop-title" className='text-center mt-3'>
                   Surelys Variedades Shop 
                   <span id='cart'>
                     <Cart
                     user={user} 
-                    count={count}
-                    setCount={setCount}
                     size={size}
                     />
                   </span>
@@ -106,6 +103,7 @@ const NavBar = (props) => {
                     { display: size < 1771 ? show : 'block', 
                       transition: '300ms',
                     animation: show === 'show' ? '300ms slideNav' : null,
+                    margin: '0px auto'
                      }}>
 
                       <li className='nav-item'>
@@ -194,7 +192,9 @@ const NavBar = (props) => {
                       </li>
                       }
 
-                      <li className="nav-item">
+                  </ul> 
+
+                  <li className="nav-item">
                       <form className="d-flex">
                      <Input 
                      className="form-control me-2 search" 
@@ -218,7 +218,6 @@ const NavBar = (props) => {
                         }
                       </li>
 
-                  </ul> 
                 </nav>
             </div>
         </React.Fragment>

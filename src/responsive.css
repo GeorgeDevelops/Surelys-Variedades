@@ -1,19 +1,11 @@
 
 
-
-
-
-
 @media (max-width: 1840px) {
     .nav-item { font-size: 16px; }
 }
 
 @media (max-width: 1750px) {
-    #cards-banner { 
-        display: grid;
-        grid-template-columns: auto auto auto auto; }
-
-    .cards-banner { 
+    #cards-banner, #carousel { 
         display: grid;
         grid-template-columns: auto auto auto auto; }
 
@@ -65,9 +57,17 @@
     #fa-trash-alt {
         left: 150px;
     }
+
+    .sliderContainer {
+        width: 85% !important;
+    }
 } 
 
 @media (max-width: 1190px) {
+    .sliderContainer {
+        width: 100% !important;
+    }
+
     #cards-banner { 
         display: grid;
         grid-template-columns: auto auto; }
@@ -151,6 +151,10 @@
         font-size: 50px;
         line-height: 150px;
     }
+
+    .sliderContainer {
+        height: 450px !important;
+    }
 }
 
 @media (max-width: 800px) {
@@ -177,6 +181,11 @@
 }
 
 @media (max-width: 650px) {
+
+    .sliderContainer {
+        height: 350px !important;
+    }
+
     #shop-title {
         margin: 0px;
         margin-left: 20px;
@@ -220,6 +229,12 @@
     #bannerCart .productName {
         font-size: 13px;
         line-height: 33px;
+    }
+}
+
+@media (max-width: 560px) {
+    #shop-title {
+        font-size: 18px;
     }
 }
 
@@ -298,6 +313,33 @@
     }
 }
 
+
+@media (max-width: 525px) {
+    .sliderContainer {
+        height: 275px !important;
+        margin: 0px auto;
+    }
+
+    #feed-banner {
+        padding: 50px;
+    }
+
+    #menu {
+        font-size: 20px;
+    }
+
+    #cart .badge {
+        font-size: 10px;
+        bottom: 15px;
+        right: 10px;
+    }
+
+    #navbar {
+        background-color: #fff;
+    }
+}
+
+
 @media (max-width: 425px) {
     #form-container {
         width: 99%;
@@ -312,6 +354,24 @@
     #card {
         width: 190px;
         height: 270px;
+    }
+
+    #search {
+        padding-left: 8px;
+        margin-left: 0px;
+    }
+
+    .arrow {
+        font-size: 25px;
+    }
+
+    .nav-item {
+        font-size: 14px;
+    }
+
+    .sliderContainer {
+        height: 210px !important;
+        margin: 0px auto;
     }
 }
 
@@ -346,14 +406,10 @@
         margin: 5px;
     }
 
-    #cards-banner {
+    #cards-banner, #carousel  {
        grid-template-columns: auto auto;
        gap: 4px;
        padding: 20px 2px 20px 2px;
-    }
-
-    .cards-banner {
-       grid-template-columns: auto;
     }
 
     #productDetailContainer .imgContainer { height: 400px;}

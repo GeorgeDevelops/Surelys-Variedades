@@ -1,20 +1,21 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Banner from './common/cartBanner';
 import Input from './common/input';
 import { useNavigate } from 'react-router-dom';
-import cartService from '../services/cartService';
 import loginService from '../services/loginService';
 import { toast } from 'react-toastify';
 import orderService from '../services/orderService';
 import { jwtDecoded } from '../services/jwtDecode';
+import { cartContext } from '../context/AppContext';
 
 const CartComponent = (props) => {
-    const { setCount, count } = props;
+    // Context 
+    const cart = useContext(cartContext);
 
     const navigate = useNavigate();
-    const [terms, setTerms] = useState(null);
     const [items, setItems] = useState([]);
+    const [terms, setTerms] = useState(null);
     const [user, setUser] = useState(null);
     const toastId = React.useRef(null);
 
@@ -61,40 +62,11 @@ const CartComponent = (props) => {
         setUser(data);
     }
 
-    async function handleDelete(e){
-        const arrayOfItems = [...items];
-        const newItems = arrayOfItems.filter(item => item._id !== e.target.id)
-        setItems(newItems);
-
-        try {
-            const res = await cartService.delete(e.target.id);
-            if (res.status === 200){ 
-                let cart = localStorage.getItem("cart");
-                let y = Number(cart) - 1;
-                localStorage.setItem("cart", y);
-                setCount(y);
-                return toast.success(res.data);}
-        } catch (ex) {
-            var x = Number(count) + 1;
-            localStorage.setItem("cart", x);
-            setCount(x);
-            setItems(arrayOfItems);
-            return toast.error(ex.response.data);
-        }
-    }
-
-    async function getCart(){
-        const response = await cartService.get();
-        if (response || response !== undefined) {
-            return setItems(response.data);
-        } else {
-            return [];
-        }
-     }
+    useEffect(() => {
+        setItems(cart.items)
+    }, [cart]);
 
     useEffect(()=>{
-        getCart();
-
         const token = localStorage.getItem('token');
 
         if (token){
@@ -116,7 +88,6 @@ const CartComponent = (props) => {
                             amount={item.amount} 
                             name={item.product.name}
                             productId={item}
-                            handleDelete={handleDelete}
                             />)
                     }
                 </div>

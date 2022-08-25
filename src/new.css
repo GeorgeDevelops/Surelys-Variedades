@@ -1,0 +1,44 @@
+/* New CSS styles Aug 25, 2022 */
+
+#communication_banner {
+    display: block;
+    width: 100%;
+    height: fit-content;
+    padding: 30px;
+    text-align: center;
+    margin: 50px 0px;
+}
+
+#communication_banner H2 {
+    font-size: clamp(20px, 3vw, 40px);
+    font-family: 'Sansita Swashed',cursive;
+}
+
+#communication_banner H3 {
+    font-size: clamp(15px, 3vw, 29px);
+    font-family: 'Sansita Swashed',cursive;
+}
+
+#carousel {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 50px 0px;
+    background-color: #DCDEE1;
+    margin: 0px auto;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+#cards_wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: fit-content;
+    margin: 0px auto;
+    gap: 20px;
+}

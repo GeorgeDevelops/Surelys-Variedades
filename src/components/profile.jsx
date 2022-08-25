@@ -1,40 +1,28 @@
 
-import React, {useEffect, useState} from 'react';
-import { jwtDecoded } from '../services/jwtDecode';
-import httpService from '../services/httpService';
+import React, {useEffect, useState, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import currentUserContext from '../context/AppContext';
 
 const Profile = (props) => {
     const [user, setUser] = useState('');
     const navigate = useNavigate();
 
+    // Context 
+    const currentUser = useContext(currentUserContext);
+
     function deleteAccount(){
         const delet = window.confirm("Seguro que quieres eliminar tu cuenta?");
-        if (delet) return alert("Esta accion no esta disponible por el momento.")
+        if (delet) return alert("Esta accion no esta disponible por el momento.");
+        return;
     }
 
     useEffect(()=>{
-       try {
-        const jwt = localStorage.getItem('token');
-
-        if (jwt){
-            const { _id } = jwtDecoded(jwt);
-            const url = `${process.env.REACT_APP_URL}/users/${_id}`;
-            const headers = { 'x-auth-token': jwt };
-    
-            async function getUser(){
-            const { data } = await httpService.get(url, { headers });
-            setUser(data);
-            }
-    
-            getUser();
+        if (currentUser){
+        const data = currentUser.data;
+        setUser(data);
         }
-
-       } catch (ex) {
-           console.log("Algo ha salido mal : ", ex);
-       }
-    },[]);
+    }, [currentUser]);
 
     return ( <React.Fragment>
         <div id='profile'>

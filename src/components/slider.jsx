@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Slider = (props) => {
-   const {slideWidth, slideHeight,
+   const {slideWidth,
     autoPlay, horizontal, vertical,
     showBullets, bulletsColor, bulletsBorderColor, topRelative,
     leftRelative, images } = props;
@@ -53,20 +53,24 @@ const Slider = (props) => {
 
     return ( 
         <React.Fragment>
-          <div className="sliderContainer" style={{ width: slideWidth, height: slideHeight, top: topRelative,
+          <div className="sliderContainer" style={{ width: slideWidth, top: topRelative,
           left: leftRelative  }}>
+
             <img 
             src={ imgs[currentIndex || 0] }
             alt="Image not available"
             id='slider'
             width={slideWidth}
-            height={slideHeight}
             style={{ display: 'flex'}}
              />
-             <FontAwesomeIcon onClick={ prevArrow } style={{ left: horizontal, top: vertical }} className='arrow left' icon="fa-solid fa-chevron-left" />
-             <FontAwesomeIcon onClick={ nextArrow } style={{ right: horizontal, top: vertical }} className='arrow right' icon="fa-solid fa-chevron-right" />
-         
-              {
+             
+              <FontAwesomeIcon onClick={ prevArrow } style={{ left: horizontal, top: vertical }} className='arrow left' icon="fa-solid fa-chevron-left" />
+              <FontAwesomeIcon onClick={ nextArrow } style={{ right: horizontal, top: vertical }} id='right_arrow' className='arrow right' icon="fa-solid fa-chevron-right" />
+
+          </div>
+
+                      
+          {
                 showBullets && <div id='bulletsContainer'>
                 {
                   Array.from({ length: null }).map((item, index) => <div 
@@ -77,7 +81,7 @@ const Slider = (props) => {
                 }
               </div>
               }
-          </div>
+
         </React.Fragment>
      );
 }

@@ -1,15 +1,18 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState, useContext} from "react";
 import { useParams } from "react-router-dom";
 import Counter from './common/counter';
 import SizeSelector from "./common/sizeSelector";
 import productService from "../services/productService";
-import cartService from "../services/cartService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Slider from "./slider";
 import { toast } from "react-toastify";
+import { cartContext } from "../context/AppContext";
+import currentUserContext from "../context/AppContext";
 
 const ProductDetails = (props) => {
-    const { setCount, count, user } = props;
+    // Context 
+    const cart = useContext(cartContext);
+    const currentUser = useContext(currentUserContext);
 
     const { productId } = useParams();
     const [product, setProduct] = useState({});
@@ -23,6 +26,7 @@ const ProductDetails = (props) => {
     const [admin, setAdmin] = useState(null);
     const toastId = React.useRef(null);
     const [images, setImages] = useState([]);
+    const [user, setUser] = useState(null);
 
     const [amount, setAmount] = useState(1);
     const [size, setSize] = useState('');
@@ -92,22 +96,15 @@ const ProductDetails = (props) => {
         total: total
       }
       
-      try {
-        var x = Number(count) + 1;
-        setCount(x);
-        localStorage.setItem("cart", x);
-
-        const response = await cartService.add(Product);
-      if (response.status && response.status === 200) return toast.success(response.data); 
-
-      } catch (ex) {
-        let cart = localStorage.getItem("cart");
-        let y = Number(cart) - 1;
-        localStorage.setItem("cart", y);
-        setCount(y);
-        return toast.error(ex.response.data);
-      }
+      return cart.add(Product);
     }
+
+    useEffect(() => {
+      if(currentUser){
+        const { data } = currentUser;
+        setUser(data);
+      }
+    }, [currentUser]);
 
     useEffect(() => {
         try {
