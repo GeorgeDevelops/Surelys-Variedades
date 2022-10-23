@@ -6,8 +6,10 @@ import './new.css';
 import React, { useState, useEffect } from 'react';
 import NavBar from './components/navbar';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faShoppingCart, faUpload, faUser, faSignOutAlt, faTrashAlt, faBars,
-faChevronLeft, faChevronRight, faTrashCan, faAt, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import {
+  faShoppingCart, faUpload, faUser, faSignOutAlt, faTrashAlt, faBars,
+  faChevronLeft, faChevronRight, faTrashCan, faAt, faPhone, faEnvelope, faCaretDown
+} from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
@@ -33,46 +35,47 @@ import Profile from './components/profile';
 import Footer from './components/footer';
 import Portal from './components/portal';
 
-library.add( faAt, faPhone, faEnvelope, faTrashCan, faShoppingCart, faUpload, faUser, faSignOutAlt, faTrashAlt, faBars, faChevronLeft, faChevronRight );
+library.add(faAt, faPhone, faEnvelope, faTrashCan, faShoppingCart, faUpload, faUser, faSignOutAlt, faTrashAlt, faBars, faChevronLeft, faChevronRight, faCaretDown);
 
 function App() {
 
   const [user, setUser] = useState(null);
   const [count, setCount] = useState([]);
 
-  async function getCurrentUser(customerId){
+  async function getCurrentUser(customerId) {
     const user = await loginService.getCurrentUser(customerId);
     setUser(user);
     setCount(user.data.cart);
-  } 
+  }
 
-  async function addToCart(product){
+  async function addToCart(product) {
     const previous = [...count];
     setCount(prev => [...prev, product]);
 
-   try {
-    const response = await cartService.add(product);
-    if (response.status && response.status === 200) return toast.success(response.data); 
-   } catch (ex) {
-    setCount(previous);
-    return toast.error(ex.response.data);
-   }
+    try {
+      const response = await cartService.add(product);
+      if (response.status && response.status === 200) return toast.success(response.data);
+    } catch (ex) {
+      setCount(previous);
+      return toast.error(ex.response.data);
+    }
   }
 
-  async function removeFromCart(e){
+  async function removeFromCart(e) {
     const arrayOfItems = [...count];
     const newItems = arrayOfItems.filter(item => item._id !== e.target.id)
     setCount(newItems);
 
     try {
-        const res = await cartService.delete(e.target.id);
-        if (res.status === 200){ 
-            return toast.success(res.data);}
+      const res = await cartService.delete(e.target.id);
+      if (res.status === 200) {
+        return toast.success(res.data);
+      }
     } catch (ex) {
-        setCount(arrayOfItems);
-        return toast.error(ex.response.data)
+      setCount(arrayOfItems);
+      return toast.error(ex.response.data)
     }
-}
+  }
 
   useEffect(() => {
 
@@ -81,57 +84,57 @@ function App() {
   useEffect(() => {
     const isLogin = localStorage.getItem('isLogin');
 
-      if (isLogin) {
-      toast.success("Has iniciado sesión correctamente", {autoClose: 5000});
+    if (isLogin) {
+      toast.success("Has iniciado sesión correctamente", { autoClose: 5000 });
       localStorage.removeItem("isLogin");
     }
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     try {
-      const jwt = localStorage.getItem('token'); 
-    if(jwt){
-      let decoded = jwtDecoded(jwt); 
-      getCurrentUser(decoded._id);
-    }
+      const jwt = localStorage.getItem('token');
+      if (jwt) {
+        let decoded = jwtDecoded(jwt);
+        getCurrentUser(decoded._id);
+      }
 
-    } catch (ex) { console.log("ERROR --> " + ex)}
+    } catch (ex) { console.log("ERROR --> " + ex) }
 
   }, []);
 
   return (
-   <React.Fragment>
-    <cartContext.Provider value={{ count: count.length, add: addToCart, remove: removeFromCart, items: count}}>
-    <currentUserContext.Provider value={user}>
+    <React.Fragment>
+      <cartContext.Provider value={{ count: count.length, add: addToCart, remove: removeFromCart, items: count }}>
+        <currentUserContext.Provider value={user}>
 
-      <ToastContainer 
-      autoClose={6000}
-      pauseOnHover={false}
-      />
+          <ToastContainer
+            autoClose={6000}
+            pauseOnHover={false}
+          />
 
-      <NavBar />
+          <NavBar />
 
-      <main style={{ marginTop: '200px' }}>
-      <Routes>
-        <Route path="/" exact element={<Feed />} />
-        <Route path="/home" exact element={<Feed />} />
-        <Route path="/signup" exact element={<Signup />} />
-        <Route path="/login" exact element={<Login />} />
-        <Route path="/:section" exact element={<Section />} />
-        <Route path="/product-details/:productId" exact element={<ProductDetails user={user} count={count} setCount={setCount} />} />
-        <Route path="/cart" exact element={<CartComponent setCount={setCount} count={count} />} />
-        <Route path="/orders" exact element={<Orders />} />
-        <Route path="/new/product" exact element={<CreateProduct />} />
-        <Route path="/confirmation/:id" exact element={<OrderConfirmation />} />
-        <Route path="/perfil" exact element={<Profile />} />
-        <Route path="/portal" exact element={<Portal />} />
-      </Routes>  
-      </main>
-      <Footer />
+          <main style={{ marginTop: '200px' }}>
+            <Routes>
+              <Route path="/" exact element={<Feed />} />
+              <Route path="/home" exact element={<Feed />} />
+              <Route path="/signup" exact element={<Signup />} />
+              <Route path="/login" exact element={<Login />} />
+              <Route path="/:section" exact element={<Section />} />
+              <Route path="/product-details/:productId" exact element={<ProductDetails user={user} count={count} setCount={setCount} />} />
+              <Route path="/cart" exact element={<CartComponent setCount={setCount} count={count} />} />
+              <Route path="/orders" exact element={<Orders />} />
+              <Route path="/new/product" exact element={<CreateProduct />} />
+              <Route path="/confirmation/:id" exact element={<OrderConfirmation />} />
+              <Route path="/perfil" exact element={<Profile />} />
+              <Route path="/portal" exact element={<Portal />} />
+            </Routes>
+          </main>
+          <Footer />
 
-    </currentUserContext.Provider>
-    </cartContext.Provider>
-   </React.Fragment>
+        </currentUserContext.Provider>
+      </cartContext.Provider>
+    </React.Fragment>
   );
 }
 

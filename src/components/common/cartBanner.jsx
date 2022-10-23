@@ -1,34 +1,37 @@
-import React, {useEffect, useState, useContext} from 'react';
-import { cartContext } from '../../context/AppContext';
+import React, { useEffect, useState, useContext } from "react";
+import { cartContext } from "../../context/AppContext";
 
 const Banner = (props) => {
-    //Context
-    const cart = useContext(cartContext)
-    
-    const { name, price, amount, productId } = props;
-    const [size, setSize] = useState(window.innerWidth);
+  //Context
+  const cart = useContext(cartContext);
 
-    function handleResize (){
-        setSize(window.innerWidth);
-      }
-  
-      const deviceWidth = window.innerWidth;
-  
-      useEffect(()=>{
-        window.addEventListener('resize', handleResize);
-      }, [deviceWidth]);
+  const { name, price, amount, productId } = props;
+  const [size, setSize] = useState(window.innerWidth);
 
-    return ( 
+  function handleResize() {
+    setSize(window.innerWidth);
+  }
+
+  const deviceWidth = window.innerWidth;
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  }, [deviceWidth]);
+
+  return (
     <React.Fragment>
-        <div id='bannerCart'>
-            <p className='productName'>{ name }</p>
-            <div className='btns'>
-                <span id={productId._id} onClick={ cart.remove } className='btn btn-danger'>Quitar</span>
-                <span className='badge bg-info'>{ `# ${ amount }` }</span>
-                <span className='badge bg-success'> { `RD$ ${ price }` }</span>
-            </div>
+      <div id="bannerCart">
+        <p className="productName">{name}</p>
+        <div className="btns">
+          <span id={productId._id} onClick={cart.remove} className="btn remove">
+            X
+          </span>
+          <span className="badge qty">{`Cantidad: ${amount}`}</span>
+          <span className="badge success"> {`RD$ ${price}`}</span>
         </div>
-    </React.Fragment> );
-}
- 
+      </div>
+    </React.Fragment>
+  );
+};
+
 export default Banner;

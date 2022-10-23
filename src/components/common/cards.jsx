@@ -1,82 +1,94 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import {  useNavigate, useLocation } from 'react-router-dom';
-import productService from '../../services/productService';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import productService from "../../services/productService";
 
 const Card = (props) => {
-const [products, setProducts] = useState([]);
-const [filtered, setFiltered] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [filtered, setFiltered] = useState([]);
 
-const { section } = useParams();
-const navigate = useNavigate();
+  const { section } = useParams();
+  const navigate = useNavigate();
 
-const search = useLocation().search;
-const category = new URLSearchParams(search).get("category");
+  const search = useLocation().search;
+  const category = new URLSearchParams(search).get("category");
 
-const filterSectionMatch = (products, section, category) => { 
+  const filterSectionMatch = (products, section, category) => {
     if (section === undefined) return setFiltered(products);
-    if (section === 'ropa') return setFiltered(products);
+    if (section === "ropa") return setFiltered(products);
 
-    let filtered = products.filter(p => p.category.includes(section));
+    let filtered = products.filter((p) => p.category.includes(section));
     return setFiltered(filtered);
-}
+  };
 
-async function getProducts(){
+  async function getProducts() {
     const { data } = await productService.getProducts();
     setProducts(data);
     filterSectionMatch(data, section);
-}
+  }
 
-function getImage(img){
+  function getImage(img) {
     let { image } = JSON.parse(img);
     return image;
-}
+  }
 
-useEffect(()=>{
+  useEffect(() => {
     getProducts();
-}, [section]);
+  }, [section]);
 
-useEffect(()=>{
+  useEffect(() => {
     filterSectionMatch(products, section, category);
-}, [section]);
+  }, [section]);
 
-useEffect(()=>{
-    if (category === "todos") return filterSectionMatch(products, section, category);
+  useEffect(() => {
+    if (category === "todos")
+      return filterSectionMatch(products, section, category);
 
-    if (category === section) return filterSectionMatch(products, section, category);
+    if (category === section)
+      return filterSectionMatch(products, section, category);
 
     if (!category) {
-        return;
+      return;
     } else {
-        const categorized = filtered.filter(i => i.category.includes(category));
-        return setFiltered(categorized);
-    } 
+      const categorized = filtered.filter((i) => i.category.includes(category));
+      return setFiltered(categorized);
+    }
+  }, [category]);
 
-}, [category]);
+  return (
+    <React.Fragment>
+      {products.length < 1 ? (
+        <p className="noFound">Ningun articulo ha sido publicado !!!</p>
+      ) : (
+        filtered.map((c) => (
+          <div
+            id="card"
+            key={c._id}
+            onClick={() => navigate(`/product-details/${c._id}`)}
+          >
+            <span id="out_stock">Vendido</span>
+            <div className="img-container">
+              <img
+                src={getImage(c.images[0])}
+                alt={c.title}
+                width={225}
+                height={200}
+                className="card-image"
+              />
+            </div>
 
-    return (
-        <React.Fragment>
-              { products.length < 1 ? <p className='noFound'>Ningun articulo ha sido publicado !!!</p> : filtered.map(c =>  <div id="card" key={c._id} onClick={() => navigate(`/product-details/${c._id}`)}>
+            <p className="title">{c.name}</p>
 
-                    <div className="img-container">
-                        <img src={ getImage(c.images[0]) }  alt={c.title} width={225} height={200} className='card-image' />
-                    </div>
+            <span className="size">{c.sizes.join(", ")}</span>
 
-                    { c.stock < 1 ? <span style={{ color: "#C0392B",
-                     fontFamily: 'fantasy',
-                     textAlign: "center",
-                     letterSpacing: "1px"}}>Vendido</span> : null}
+            <span className="price">RD${c.price}</span>
 
-                    <p className='title'>{ c.name }</p>
+            <button className="button">Agregar al carrito</button>
+          </div>
+        ))
+      )}
+    </React.Fragment>
+  );
+};
 
-                    <span className="size">{ c.sizes.toString() }</span>
-
-                    <span className="price">RD${ c.price }</span>
-
-                    <button className='button'>Agregar al carrito</button>
-                </div> ) }
-        </React.Fragment>
-     );
-}
- 
 export default Card;
